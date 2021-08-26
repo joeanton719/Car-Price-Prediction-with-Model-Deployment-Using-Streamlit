@@ -97,41 +97,41 @@ engine = mid_column.slider(
     )
 
 
-# power_limit = df.query(f'model == "{model}"')['power']
+power_limit = df.query(f'model == "{model}"')['power']
 
-# power = right_column.slider( 
-#         "Brake Horse Power (BHP)", 
-#         min_value = power_limit.min()-10, 
-#         max_value = power_limit.max()+10, 
-#         value = float(power_limit.mean()), 
-#         step = 0.1
-#     )
-
-
-# cat_model = pickle.load(open('cat_pipe.pkl', 'rb'))
+power = right_column.slider( 
+        "Brake Horse Power (BHP)", 
+        min_value = float(power_limit.min()-10.0), 
+        max_value = float(power_limit.max()+10.0), 
+        value = float(power_limit.mean()), 
+        step = float(0.1)
+    )
 
 
-# features = pd.DataFrame({
-#         "brand" : brand,
-#         "model" : model, 
-#         "milage_kmpl" : mileage,
-#         "location" : loc, 
-#         "year" : year, 
-#         "kilometers_driven" : distance,
-#         "fuel_type" : fuel, 
-#         "transmission" : transmission,
-#         "is_first_owner" : owner, 
-#         "engine" : engine, 
-#         "power" : power,
-#         "seats" : seats
-#     }, index=[0])
+cat_model = pickle.load(open('cat_pipe.pkl', 'rb'))
 
 
-# prediction = cat_model.predict(features)[0]
+features = pd.DataFrame({
+        "brand" : brand,
+        "model" : model, 
+        "milage_kmpl" : mileage,
+        "location" : loc, 
+        "year" : year, 
+        "kilometers_driven" : distance,
+        "fuel_type" : fuel, 
+        "transmission" : transmission,
+        "is_first_owner" : owner, 
+        "engine" : engine, 
+        "power" : power,
+        "seats" : seats
+    }, index=[0])
 
-# pressed = mid_column.button('Predict Car Price')
 
-# if pressed:
-#   st.subheader(f"This Car is predicted to cost around ₹ {prediction:,.0f}")
-#   st.balloons()
+prediction = cat_model.predict(features)[0]
+
+pressed = mid_column.button('Predict Car Price')
+
+if pressed:
+  st.subheader(f"This Car is predicted to cost around ₹ {prediction:,.0f}")
+  st.balloons()
   
