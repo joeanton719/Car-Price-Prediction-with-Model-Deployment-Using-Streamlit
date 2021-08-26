@@ -69,7 +69,7 @@ distance = right_column.slider(
         min_value = 0, 
         max_value = 750000, 
         value = 1000, 
-        step = 50
+        step = 100
     )
 
 mileage_limit = df.query(f'model == "{model}"')['milage_kmpl']
