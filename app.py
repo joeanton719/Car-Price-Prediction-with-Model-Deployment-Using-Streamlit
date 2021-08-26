@@ -85,16 +85,16 @@ mileage = left_column.slider(
     )
 
 
-# engine_limit = df.query(f'model == "{model}"')['engine']
+engine_limit = df.query(f'model == "{model}"')['engine']
 
 
-# engine = mid_column.slider( 
-#         "Engine CC", 
-#         min_value = engine_limit.min()-10, 
-#         max_value = engine_limit.max()+10, 
-#         value = int(engine_limit.min()), 
-#         step = 1
-#     )
+engine = mid_column.slider( 
+        "Engine CC", 
+        min_value = engine_limit.min()-10, 
+        max_value = engine_limit.max()+10, 
+        value = int(engine_limit.min()), 
+        step = 1
+    )
 
 
 # power_limit = df.query(f'model == "{model}"')['power']
