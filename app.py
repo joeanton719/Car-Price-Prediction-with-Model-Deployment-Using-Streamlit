@@ -78,7 +78,7 @@ mileage = left_column.slider(
         "Mileage (km/l)", 
         min_value = mileage_limit.min()-10, 
         max_value = mileage_limit.max()+10, 
-        value = mileage_limit.mode(), 
+        value = mileage_limit.mean(), 
         step = 0.1
     )
 
@@ -101,7 +101,7 @@ power = right_column.slider(
         "Brake Horse Power (BHP)", 
         min_value = power_limit.min()-10, 
         max_value = power_limit.max()+10, 
-        value = power_limit.mode(), 
+        value = power_limit.mean(), 
         step = 0.1
     )
 
