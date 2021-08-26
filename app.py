@@ -78,7 +78,7 @@ mileage = left_column.slider(
         "Mileage (km/l)", 
         min_value = np.min(mileage_limit)-10, 
         max_value = np.max(mileage_limit)+10, 
-        value = mileage_limit.mean(), 
+        value = float(mileage_limit.mean()), 
         step = 0.1
     )
 
