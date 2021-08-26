@@ -72,15 +72,15 @@ distance = right_column.slider(
         step = 50
     )
 
-mileage_limit = df.query(f'model == "{model}"')['milage_kmpl']
+# mileage_limit = df.query(f'model == "{model}"')['milage_kmpl']
 
-mileage = left_column.slider( 
-        "Mileage (km/l)", 
-        min_value = mileage_limit.min()-10, 
-        max_value = mileage_limit.max()+10, 
-        value = mileage_limit.mean(), 
-        step = 0.1
-    )
+# mileage = left_column.slider( 
+#         "Mileage (km/l)", 
+#         min_value = mileage_limit.min()-10, 
+#         max_value = mileage_limit.max()+10, 
+#         value = mileage_limit.mean(), 
+#         step = 0.1
+#     )
 
 
 # engine_limit = df.query(f'model == "{model}"')['engine']
