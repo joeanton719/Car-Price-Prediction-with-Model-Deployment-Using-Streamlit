@@ -66,21 +66,23 @@ loc = mid_column.selectbox(
 
 distance = right_column.slider( 
         "Total Distance Driven in Kilometers", 
-        min_value = int(0), 
-        max_value = int(750000), 
-        value = int(0), 
-        step = int(50)
+        min_value = 0, 
+        max_value = 750000, 
+        value = 1000, 
+        step = 50
     )
 
 mileage_limit = df.query(f'model == "{model}"')['milage_kmpl']
 
-mileage = left_column.slider( 
-        "Mileage (km/l)", 
-        min_value = float(np.min(mileage_limit)-10.0), 
-        max_value = float(np.max(mileage_limit)+10.0), 
-        value = float(mileage_limit.mean()), 
-        step = float(0.1)
-    )
+# print(mileage_limit.min())
+
+# mileage = left_column.slider( 
+#         "Mileage (km/l)", 
+#         min_value = float(np.min(mileage_limit)-10.0), 
+#         max_value = float(np.max(mileage_limit)+10.0), 
+#         value = float(mileage_limit.mean()), 
+#         step = float(0.1)
+#     )
 
 
 # engine_limit = df.query(f'model == "{model}"')['engine']
