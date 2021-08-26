@@ -76,13 +76,13 @@ mileage_limit = df.query(f'model == "{model}"')['milage_kmpl']
 
 # print(mileage_limit.min())
 
-# mileage = left_column.slider( 
-#         "Mileage (km/l)", 
-#         min_value = float(np.min(mileage_limit)-10.0), 
-#         max_value = float(np.max(mileage_limit)+10.0), 
-#         value = float(mileage_limit.mean()), 
-#         step = float(0.1)
-#     )
+mileage = left_column.slider( 
+        "Mileage (km/l)", 
+        min_value = float(np.min(mileage_limit)-10.0), 
+        max_value = float(np.max(mileage_limit)+10.0), 
+        value = float(mileage_limit.mean()), 
+        step = float(0.1)
+    )
 
 
 # engine_limit = df.query(f'model == "{model}"')['engine']
