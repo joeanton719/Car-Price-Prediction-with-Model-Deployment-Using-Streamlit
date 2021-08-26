@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import pickle
 
+
 st.title("Let's Predict Used Car Prices!")
 
 @st.cache
@@ -33,10 +34,11 @@ year = right_column.selectbox(
      df['year'].sort_values(ascending = False).unique()
      )
 
+fuel_type = df.query(f'model == "{model}"')['fuel_type'].unique()
 
 fuel = left_column.selectbox(
     "Fuel Type",
-     df['fuel_type'].unique()
+     fuel_type
      )
 
 
@@ -71,30 +73,36 @@ distance = right_column.slider(
         step = 50
     )
 
+mileage_limit = df.query(f'model == "{model}"')['milage_kmpl']
+
 mileage = left_column.slider( 
         "Mileage (km/l)", 
-        min_value = 0.0, 
-        max_value = 50.0, 
-        value = 5.0, 
+        min_value = mileage_limit.min()-10, 
+        max_value = mileage_limit.max()+10, 
+        value = mileage_limit.mean(), 
         step = 0.1
     )
+
+
+engine_limit = df.query(f'model == "{model}"')['engine']
 
 engine = mid_column.slider( 
         "Engine CC", 
-        min_value = 600, 
-        max_value = 5500, 
-        value = 650, 
-        step = 10
+        min_value = engine_limit.min()-10, 
+        max_value = engine_limit.max()+10, 
+        value = int(engine_limit.mean()), 
+        step = 1
     )
+
+power_limit = df.query(f'model == "{model}"')['power']
 
 power = right_column.slider( 
         "Brake Horse Power (BHP)", 
-        min_value = 30.0, 
-        max_value = 500.0, 
-        value = 50.0, 
+        min_value = power_limit.min()-10, 
+        max_value = power_limit.max()+10, 
+        value = power_limit.mean(), 
         step = 0.1
     )
-
 
 
 cat_model = pickle.load(open('cat_pipe.pkl', 'rb'))
@@ -121,6 +129,6 @@ prediction = cat_model.predict(features)[0]
 pressed = mid_column.button('Predict Car Price')
 
 if pressed:
-  st.subheader(f"This Car is predicted to cost around {prediction:,.0f} INR")
+  st.subheader(f"This Car is predicted to cost around ₹ {prediction:,.0f}")
   st.balloons()
   
