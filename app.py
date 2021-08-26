@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 import pickle
 
-
 st.title("Let's Predict Used Car Prices!")
 
 @st.cache
@@ -90,7 +89,7 @@ engine = mid_column.slider(
         "Engine CC", 
         min_value = engine_limit.min()-10, 
         max_value = engine_limit.max()+10, 
-        value = engine_limit.median(), 
+        value = engine_limit.mean().astype("int64"), 
         step = 1
     )
 
