@@ -90,7 +90,7 @@ engine = mid_column.slider(
         "Engine CC", 
         min_value = engine_limit.min()-10, 
         max_value = engine_limit.max()+10, 
-        value = int(engine_limit.mean()), 
+        value = np.int(engine_limit.mean()), 
         step = 1
     )
 
